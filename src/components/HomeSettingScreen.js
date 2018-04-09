@@ -11,7 +11,7 @@ import { mapStateToProps, mapDispatchToProps } from '../action/action.js';
 import { connect } from 'react-redux';
 import store from '../store/store.js';
 
-class SettingScreen extends Component<{}> {
+class HomeSettingScreen extends Component<{}> {
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -19,8 +19,6 @@ class SettingScreen extends Component<{}> {
         <Text style={styles.text}>ホーム画面の色を赤にする</Text>
         {/* <MKSwitch checked={this.props.checked} onCheckedChange={ () => this._changeColor().bind(this) }/> */}
         <MKSwitch checked={this.props.checked} onCheckedChange={() => this.changeColor() }/>
-        <Text style={styles.text}>ホーム画面のカウンターを+1する</Text>
-        <Button title="カウントアップ" onPress={ () => this.props.increment() } />
         <Button title="ホーム画面へ" onPress={ () => navigate('Home') } />
       </View>
     );
@@ -42,4 +40,4 @@ class SettingScreen extends Component<{}> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeSettingScreen);

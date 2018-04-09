@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 import { Platform } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from './src/store/store.js';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator } from 'react-navigation';
 import HomeScreen from './src/components/HomeScreen.js';
-import SettingScreen from './src/components/SettingScreen.js';
+import CounterSettingScreen from './src/components/CounterSettingScreen.js';
+import HomeSettingScreen from './src/components/HomeSettingScreen.js';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -18,10 +19,27 @@ const instructions = Platform.select({
 
 // 初期ルートをホーム画面に指定
 const config = {initialRoute: 'Home'};
+// 設定画面用TabNavigationを設定（アプリ設定画面、接続設定画面）
+const SettingScreenNavigator = TabNavigator({
+  HomeSetting: {
+    screen: HomeSettingScreen,
+    navigationOptions: {
+      title: 'ホーム画面設定'
+    }
+  },
+
+  CounterSetting: {
+    screen: CounterSettingScreen,
+    navigationOptions: {
+      title: 'カウンター設定'
+    }
+  }
+});
+
 // ルート情報(全体の画面)
 const Routes = StackNavigator({
   Home: {screen: HomeScreen, navigationOptions: {title: 'ホーム画面'},},
-  Setting: {screen: SettingScreen, navigationOptions: {title: '設定画面'},}
+  Setting: {screen: SettingScreenNavigator, navigationOptions: {title: '設定画面'},}
   }, config);
   
 export default class App extends Component<{}> {

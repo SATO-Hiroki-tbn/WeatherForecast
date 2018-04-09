@@ -10,6 +10,10 @@ import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '../action/action.js';
 
 class HomeScreen extends Component<{}> {
+  props: {
+    count: number
+  };
+
   render() {
     // プロパティnavigationは、react-navigationによる画面遷移の際に自動的に渡される
     const { navigate } = this.props.navigation;
