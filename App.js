@@ -7,6 +7,7 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import HomeScreen from './src/components/HomeScreen.js';
 import CounterSettingScreen from './src/components/CounterSettingScreen.js';
 import HomeSettingScreen from './src/components/HomeSettingScreen.js';
+import { MenuProvider } from 'react-native-popup-menu';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -19,7 +20,7 @@ const instructions = Platform.select({
 
 // 初期ルートをホーム画面に指定
 const config = {initialRoute: 'Home'};
-// 設定画面用TabNavigationを設定（アプリ設定画面、接続設定画面）
+// 設定画面用TabNavigationを設定（ホーム画面設定、カウンター設定画面）
 const SettingScreenNavigator = TabNavigator({
   HomeSetting: {
     screen: HomeSettingScreen,
@@ -47,7 +48,9 @@ export default class App extends Component<{}> {
     return (
       // Reduxを適用するため、<Provider>でラップする
       <Provider store={ store }>
-        <Routes />
+        <MenuProvider>
+          <Routes />
+        </MenuProvider>
       </Provider>
     );
   }
