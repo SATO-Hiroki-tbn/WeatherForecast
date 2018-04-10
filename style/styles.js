@@ -17,4 +17,10 @@ export const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  textInput: {
+    width: 100,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });

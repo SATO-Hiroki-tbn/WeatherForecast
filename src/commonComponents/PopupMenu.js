@@ -18,7 +18,6 @@ export class PopupMenu extends Component {
     return (
       <View>
         <Menu
-          // デフォルトでの表示場所が
           onSelect={(value) => navigate(value)}
           style={styles.menuList}>
           <MenuTrigger style={[styles.trigger, ButtonStyle.buttonDefault]}>

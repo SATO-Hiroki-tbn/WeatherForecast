@@ -33,3 +33,11 @@ export const changeHomeBackgroudColorToDefaultAction = () => {
     type: "CHANGE_BACKGROUND_HOME_TO_DEFAULT",
   }
 }
+
+// ユーザ名を保存するアクション
+export const saveUserNameAction = (text) => {
+  return {
+    type: "SAVE_USER_NAME",
+    userName: text
+  }
+}

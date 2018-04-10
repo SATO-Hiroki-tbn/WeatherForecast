@@ -41,5 +41,10 @@ export function mapDispatchToProps(dispatch) {
       console.log("before : dispatch( changeHomeBackgroudColorToDefaultAction() );");
       dispatch( ActionCreator.changeHomeBackgroudColorToDefaultAction() );
     },
+    /* ユーザ名を保存 */
+    saveUserName: (text) => {
+      console.log("before : dispatch( ActionCreator.saveUserNameAction() );");
+      dispatch( ActionCreator.saveUserNameAction(text) );
+    },
   }
 }
