@@ -32,10 +32,10 @@ class HomeScreen extends Component<{}> {
   };
 
   // 【初期化処理】componentがDOMツリーに追加される前に一度だけ呼ばれる。
-  componentWillMount() {
-    // userName: AsyncStorage⇒Store
-    this._getUserNameFromAsyncStorage(this.props.saveUserName);
-  }
+  // componentWillMount() {
+  //   // userName: AsyncStorage⇒Store
+  //   this._getUserNameFromAsyncStorage(this.props.saveUserName);
+  // }
 
   render() {
     console.log("start: HomeScreenのrender()");

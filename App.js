@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { Platform } from 'react-native';
 import { Provider } from 'react-redux';
-import { store } from './src/store/store.js';
+import store, { persistor } from './src/store/store.js'; // {}を付ける付けないの違いが不明
+import { PersistGate } from 'redux-persist/integration/react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import HomeScreen from './src/components/HomeScreen.js';
 import CounterSettingScreen from './src/components/CounterSettingScreen.js';
@@ -48,9 +49,11 @@ export default class App extends Component<{}> {
     return (
       // Reduxを適用するため、<Provider>でラップする
       <Provider store={ store }>
-        <MenuProvider>
-          <Routes />
-        </MenuProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <MenuProvider>
+            <Routes />
+          </MenuProvider>
+        </PersistGate>
       </Provider>
     );
   }

@@ -1,4 +1,6 @@
 import { createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import reducer from '../reducer/index';
 
 /* createStore(reducer, preloadedState, enhancer)
@@ -9,4 +11,21 @@ import reducer from '../reducer/index';
  *
  * description : combineReducerでまとめたreducerオブジェクトをstoreに設定 
  */
-export const store = createStore(reducer);
+
+// redux-persist導入前
+// export const store = createStore(reducer);
+
+// redux-persist導入後
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['userName', 'count'], // userNameとcountのStateのみStorageに保存する
+  // blacklist: ['backgroundColor'] // backgroundColorのStateはStorageに保存しない　⇒ whitelistかどっちかでよさそう
+};
+
+const persistedReducer = persistReducer(persistConfig, reducer);
+
+const store = createStore(persistedReducer);
+
+export const persistor = persistStore(store);
+export default store;
